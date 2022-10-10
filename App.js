@@ -1,68 +1,18 @@
-import { useState } from 'react'
-import { StyleSheet, TextInput, View, Button, FlatList } from 'react-native';
+// app.js
 
-import GoalItem from './components/GoalItem'
+const express = require('express');
+const connectDB = require('./config/db')
+var cors = require('cors');
 
-export default function App() {
-  const [enteredGoalText, setEnteredGoalText] = useState('')
-  const [courseGoals, setCourseGoals] = useState([]);
+const app = express();
 
-  function goalInputHandler(enteredText) {
-    setEnteredGoalText(enteredText);
-  };
+connectDB();
 
-  function addGloalHandler() {
-    setCourseGoals((currentCourseGoals) => [
-      ...currentCourseGoals, 
-      {text: enteredGoalText, key: Math.random().toString()},
-    ]);
-  };
+// cors
+app.use(cors({ origin: true, credentials: true }));
 
+app.get('/', (req, res) => res.send('Hello world!'));
 
-  return (
-    <View style={styles.appContainer}>
-      <View style={styles.inputContainer}>
-        <TextInput style={styles.textInput} placeholder='Enter your course goal here!' onChangeText={goalInputHandler} />
-        <Button title="Add Goal" onPress={addGloalHandler} />
-      </View>
-      <View style={styles.goalsContainer}>
-        <FlatList
-         data ={courseGoals}
-          renderItem={(itemData) => {
-            return <GoalItem text = {itemData.item.text}/>;
-          }}
-          keyExtractor={(item, index) => {
-            return item.id;
-          }}
-        />
-      </View>
-    </View>
-  );
-}
+const port = process.env.PORT || 8082;
 
-const styles = StyleSheet.create({
-  appContainer: {
-    flex: 1,
-    padding: 50,
-    paddingHorizontal: 60,
-  },
-  inputContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 24,
-    borderBottomWidth: 1,
-    borderbottomColor: '#7f7ca0'
-  },
-  textInput: {
-    borderWidth: 1,
-    borderColor: '#ccccc',
-    width: '70%',
-    marginRight: 8,
-    padding: 8,
-  },
-  goalsContainer: {
-    flex: 4,
-  },
-});
+app.listen(port, () => console.log(`Server running on port ${port}`));

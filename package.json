@@ -1,21 +1,34 @@
 {
   "name": "project_fibre_ltd",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
+  "description": "",
+  "main": "app.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "start": "node app.js",
+    "app": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RustyLesh/project_fibre_ltd.git"
+  },
+  "author": "RND Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RustyLesh/project_fibre_ltd/issues"
+  },
+  "homepage": "https://github.com/RustyLesh/project_fibre_ltd#readme",
   "dependencies": {
-    "expo": "~46.0.13",
-    "expo-status-bar": "~1.4.0",
-    "react": "18.0.0",
-    "react-native": "0.69.6"
+    "axios": "^1.1.2",
+    "bcryptjs": "^2.4.3",
+    "body-parse": "^0.1.0",
+    "config": "^3.3.8",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^6.6.5",
+    "validation": "^0.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
-  },
-  "private": true
+    "nodemon": "^2.0.20"
+  }
 }
