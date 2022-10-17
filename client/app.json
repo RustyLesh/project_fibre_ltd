@@ -2,6 +2,7 @@
   "expo": {
     "name": "project_fibre_ltd",
     "slug": "project_fibre_ltd",
+    "description":"Bathroom Planner",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
